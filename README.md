@@ -23,8 +23,8 @@ Este proyecto es un monitor de tráfico de red que utiliza Scapy para capturar p
 
 1. Clona este repositorio:
    ```bash
-   git clone https://github.com/tuusuario/tu-repositorio.git
-   cd tu-repositorio
+   git clone https://github.com/FalconAkantor/WatchPort.git
+   cd WatchPort
    ```
 2. Instala las dependencias necesarias:
    ```bash
@@ -42,10 +42,12 @@ Este proyecto es un monitor de tráfico de red que utiliza Scapy para capturar p
 En la variable `PUERTOS_SOSPECHOSOS`, define los puertos que deseas monitorear:
 ```python
 PUERTOS_SOSPECHOSOS = [
+    21,    #FTP
     22,    # SSH
     23,    # Telnet
     80,    # HTTP
     443,   # HTTPS
+    445,   # Samba
     8080,  # HTTP alternativo
     3389   # Escritorio remoto (RDP)
 ]
@@ -59,7 +61,7 @@ El sistema incluye una lista blanca para ignorar conexiones conocidas. Esta list
 
 1. Ejecuta el script:
    ```bash
-   sudo python3 monitor.py
+   sudo python3 watchport.py
    ```
 2. Recibirás alertas en Telegram con los detalles de cada conexión sospechosa, incluyendo:
    - IP de origen
@@ -74,12 +76,13 @@ El sistema incluye una lista blanca para ignorar conexiones conocidas. Esta list
 
 ### 1. Configuración Inicial
 
-- Define las variables para el bot de Telegram, los puertos a monitorear y la duración de la cache:
+- Define las variables para el bot de Telegram, los puertos a monitorear y la duración de la caché, ademas de la IP local de tu máquina:
   ```python
   TELEGRAM_TOKEN = "<TU_TOKEN>"
   CHAT_ID = "<TU_CHAT_ID>"
   PUERTOS_SOSPECHOSOS = [22, 80, 443, ...]
   CACHE_EXPIRATION = timedelta(minutes=1)
+  if paquete[IP].dst != "Tu maquina":
   ```
 
 ### 2. Captura de Paquetes
@@ -114,8 +117,8 @@ El sistema incluye una lista blanca para ignorar conexiones conocidas. Esta list
 ```
 🚨 Tráfico Detectado 🚨
 📅 Hora: 2025-01-26 14:45:25
-📥 Origen: 192.168.1.42
-📤 Destino: 192.168.1.10
+📥 Origen: 192.168.1.10
+📤 Destino: 192.168.1.42
 🔐 Puerto: 443
 🔄 Contador: 3
 ⏳ Tiempo conectado: 0d 0h 3m 12s
@@ -129,7 +132,7 @@ El sistema incluye una lista blanca para ignorar conexiones conocidas. Esta list
 
 ## Contribuciones
 
-Las contribuciones son bienvenidas. Por favor, abre un issue o envía un pull request con tus mejoras o sugerencias.
+Las contribuciones son bienvenidas..
 
 ## Licencia
 
