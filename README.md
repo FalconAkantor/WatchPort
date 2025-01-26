@@ -126,7 +126,6 @@ El sistema incluye una lista blanca para ignorar conexiones conocidas. Esta list
 
 ## Mejoras Futuras
 
-- Integración con herramientas de visualización (e.g., Grafana).
 - Compatibilidad con tráfico IPv6.
 - Opciones para filtrar eventos por geolocalización.
 
